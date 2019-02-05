@@ -1,0 +1,17 @@
+using System;
+					
+public class Program
+{
+	public static void Main()
+	{	
+	double a = double.Parse(Console.ReadLine());
+	double b = double.Parse(Console.ReadLine());
+		double ob = 2*a + 2*b ;
+		double S = a*b ;
+		double diagonal = Math.Sqrt(a*a + b*b) ;
+		Console.WriteLine(ob);
+		Console.WriteLine(S);
+		Console.WriteLine(diagonal);
+	
+	}
+}
