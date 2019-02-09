@@ -1,0 +1,18 @@
+using System;
+using System.Linq;
+using System.Text;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+
+namespace ConsoleApp9
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {   List<string> lists = Console.ReadLine().Split(' ').ToList();
+            lists.Reverse();
+           
+            Console.WriteLine(String.Join(" ", lists));
+        }
+    }
+}
