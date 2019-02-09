@@ -1,0 +1,25 @@
+
+using System;
+using System.Linq;
+
+namespace ConsoleApp3
+{
+    class Program
+    {
+        static void Main(string[] args) //4 1 1 4 2 3 4 4 1 2 4 9 3
+        {
+            int[] arr = Console.ReadLine().Split(' ').Select(int.Parse).ToArray();
+            int[] fr = new int[arr.Length];
+            int br = 1;
+            int maxBr = 1;
+            int chisloMaxFr = arr[0];
+            int panichka = arr[0];
+            for (int i = 1; i < arr.Length; i++)
+            {
+                
+                if (panichka == arr[i]) br++;
+                if (maxBr < br)
+                { maxBr = br; chisloMaxFr = panichka; }
+                
+                
+            }
