@@ -1,0 +1,28 @@
+using System;
+using System.Linq;
+
+namespace ConsoleApp7
+{
+    class Program
+    {
+        public static void Print()
+        {
+            Console.WriteLine("Hello");
+        }
+        public static string Print2()
+        {
+            return "Hello";
+        }
+        static void Main(string[] args)
+        {
+
+
+            {
+                Print();
+                Console.WriteLine(Print2());
+            }
+
+        }
+    }
+}
+
