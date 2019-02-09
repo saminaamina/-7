@@ -1,0 +1,31 @@
+using System;
+
+namespace ConsoleApp3
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] arr = Console.ReadLine().Split(' ').Select(int.Parse).ToArray();
+            for (int i = 0; i < arr.Length - 1; i++)
+            {
+                for (int j = 0; j < arr.Length - 1; j++)
+                {
+                    if (arr[j] > arr[j + 1])
+                    {
+                        int swapVar = arr[j];
+                        arr[j] = arr[j + 1];
+                        arr[j + 1] = swapVar;
+
+                    }
+                        
+
+
+                }
+
+            }
+
+            Console.WriteLine(String.Join(" ", arr));
+        }
+    }
+}
