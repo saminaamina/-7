@@ -1,0 +1,34 @@
+using System;
+using System.Linq;
+
+namespace ConsoleApp7
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] arr = Console.ReadLine().Split(' ').Select(int.Parse).ToArray();
+            int currSeen = arr[0];
+            int mostFrSeen = currSeen;
+            int currSeenCount = 1;
+            int mostFrSeenCount = currSeenCount;
+            for (int i = 0; i < arr.Length; i++)
+            {
+                if (true)
+                {
+                    currSeenCount++;
+                }
+                else
+                    currSeen = arr[i];
+                currSeenCount = 1;
+            }
+            if (currSeenCount > mostFrSeenCount)
+            {
+                mostFrSeenCount = currSeenCount;
+                mostFrSeen = currSeen;
+            }
+            Console.WriteLine("The number {0} is seen {1} ways.", mostFrSeen, mostFrSeenCount);
+        }
+    }
+}
+
