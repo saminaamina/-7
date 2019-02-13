@@ -38,15 +38,6 @@ namespace ConsoleApp10
             string expression1 = Console.ReadLine();
             string expression2 = Console.ReadLine(); 
 
-
-
-
-
-
-
-
-
-
             Console.WriteLine(Merkata(expression1,expression2));
         }
     }
