@@ -1,0 +1,53 @@
+using System;
+using System.Linq;
+using System.Text;
+
+namespace ConsoleApp14
+{
+    class Program
+    {
+        static string Left(string dir)
+        {
+            if (dir == "+x") dir = "+y";
+            else if (dir == "+y") dir = "-x";
+            else if (dir == "-x") dir = "-y";
+            else if (dir == "-y") dir = "+x";
+            return dir;
+        }
+
+        static string Right(string dir) 
+        {
+            if (dir == "+x") dir = "-y";
+            else if (dir == "-y") dir = "-x";
+            else if (dir == "-x") dir = "+y";
+            else if (dir == "+y") dir = "+x";
+            return dir;
+        }
+
+
+        static void Main(string[] args)
+        {
+            string[] route = Console.ReadLine().ToUpper().Split(' ').ToArray();
+            string direction = "+x";
+            int x = 0;
+            int y = 0;
+            for (int i = 0; i < route.Length; i++)
+            {
+                switch (route[i])
+                {
+                    case "L": direction = Left(direction); break;
+                    case "R": direction = Right(direction); break;
+                    case "F": break;
+                    default:
+                        if (direction == "+x") x += int.Parse(route[i]);
+                        else if (direction == "-x") x -= int.Parse(route[i]);
+                        else if (direction == "-y") y -= int.Parse(route[i]);
+                        else y += int.Parse(route[i]);
+                        break;
+                }
+            }
+            double distance = Math.Sqrt(x * x + y * y);
+            Console.WriteLine($"Position: (x: {x}, y:{y}), Distance = {distance:F2}");
+        }
+    }
+}
