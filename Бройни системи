@@ -1,0 +1,19 @@
+using System;
+
+namespace ConsoleApp14
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("Бройна система, в която ще се въвежда числото:");
+            int p = int.Parse(Console.ReadLine());
+            Console.WriteLine("Бройна система, в която ще се извежда числото:");
+            int q = int.Parse(Console.ReadLine());
+            Console.WriteLine("Число: ");
+            int num = Convert.ToInt32(Console.ReadLine(), p);
+            string output = Convert.ToString(num, q);
+            Console.WriteLine(output);
+        }
+    }
+}
