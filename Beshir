@@ -1,0 +1,43 @@
+using System;
+using System.Linq;
+using System.Collections.Generic;
+using System.Text;
+namespace ConsoleApp21
+{ 
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Dictionary<string, List<string>> beshir = new Dictionary<string, List<string>>();
+           
+            while (true)
+            {
+                string input = Console.ReadLine();
+                if (input != "Blaze it!")
+                {
+                    int pos = input.IndexOf(" -> ");
+                    string key = input.Substring(0, pos);
+                    string value = input.Substring(pos + 4, input.Length - (pos + 4));
+                    if (beshir.ContainsKey(key))
+                    {
+                        beshir[key].Add(value);
+                    }
+                    else
+                    {
+                        List<string> tempList = new List<string>();
+
+                        tempList.Add(value);
+
+                        beshir.Add(key, tempList);
+
+                    }
+                }
+                else
+                {
+                    break;
+                }
+            }
+            Console.WriteLine();
+        }
+    }
+}
