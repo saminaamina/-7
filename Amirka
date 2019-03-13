@@ -1,0 +1,66 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace rainair
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Dictionary<string, List<int>> customers = new Dictionary<string, List<int>>();
+            while (true)
+            {
+                string text = Console.ReadLine();
+                if (text == "I believe I can fly!") break;
+                else
+                {
+                    string[] input = text.Split(' ').ToArray();
+                    if (input[1] != "=")
+                    {
+                        string key = input[0];
+                        int[] value = new int[input.Length - 1];
+                        List<int> tempList = new List<int>();
+                        for (int i = 0; i < input.Length - 1; i++)
+                        {
+                            value[i] = int.Parse(input[i + 1]);
+
+                            if (customers.ContainsKey(key))
+                            { customers[key].Add(value[i]); }
+                            else
+                            {
+                                tempList.Add(value[i]);
+                                customers.Add(key, tempList);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        string key = input[0];
+
+
+                        for (int i = 0; i < customers[input[2]].Count; i++)
+                        {
+                            customers[key] = customers[input[2]];
+                        }
+                    }
+                }
+
+            }
+            foreach (var item in customers
+            .OrderByDescending(x => x.Value.Count).
+            ThenBy(x => x.Key))
+            {
+                Console.Write($"#{item.Key} ::: ");
+                item.Value.Sort();
+                foreach (var cus in item.Value)
+                {
+                    Console.Write(cus + " ");
+                }
+                Console.WriteLine();
+            }
+        }
+    }
+}
