@@ -54,8 +54,8 @@ namespace rainair
             ThenBy(x => x.Key))
             {
                 Console.Write($"#{item.Key} ::: ");
-                item.Value.Sort();
-                foreach (var cus in item.Value)
+               // item.Value.Sort();
+                foreach (var cus in item.Value.OrderBy(x => x))
                 {
                     Console.Write(cus + " ");
                 }
