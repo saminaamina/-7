@@ -1,0 +1,52 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace Rainair
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<int> sequence = Console.ReadLine().Split(' ').Select(int.Parse).ToList();
+
+            int index = sequence.Last<int>();
+
+            // int index = sequence[sequence.Count-1];
+
+            int[] arr = sequence.Take(sequence.Count - 1).ToArray();
+            int steps = 0;
+
+            while (true)
+            {
+
+                for (int i = 0; i < arr.Length; i++)
+                {
+                    arr[i]--;
+                }
+
+                if (arr[index] == 0)
+                {
+                    break;
+                }
+                else
+                {
+                    steps++;
+                    for (int i = 0; i < arr.Length; i++)
+                    {
+                        if (arr[i] == 0)
+                        {
+                            arr[i] = sequence[i]; 
+                        } 
+                    }
+
+                    index = int.Parse(Console.ReadLine());
+
+                }
+            }
+
+            Console.WriteLine(string.Join(" ", arr));
+            Console.WriteLine(steps);
+        }
+    }
+}
