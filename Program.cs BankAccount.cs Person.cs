@@ -62,3 +62,76 @@ namespace BankAccount.cs
         }
     }
 }
+
+
+
+
+BankAccount.cs
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace BankAccount.cs
+{
+    class BankAccount
+    {
+        private int id;
+        private double balance;
+
+        public int ID
+        {
+            get { return id; }
+            set { id = value; }
+        }
+        public double Balance
+        {
+            get { return balance; }
+           set { balance = value; }
+        }
+
+
+    }
+}
+
+
+
+ Person.cs
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace BankAccount.cs
+{
+    class Person
+    {
+        private string name;
+        private int age;
+        private List<BankAccount> accounts = new List<BankAccount>();
+        public string Name
+        {
+            get { return name; }
+            set { name = value; }
+        }
+        public int Age
+        {
+            get { return age; }
+            set { age = value; }
+        }
+        public List<BankAccount> Accounts
+        {
+            get { return accounts; }
+            set { accounts = value; }
+        }
+        public double GetBalance()
+        {
+            return accounts.Sum(element => element.Balance);
+        }
+
+
+    }
+}
