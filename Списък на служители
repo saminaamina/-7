@@ -1,0 +1,186 @@
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace EmployeeList
+{
+    class Employee
+    {
+        private string name;
+        private double salary;
+        private string position;
+        private string department;
+        private string email;
+        private int age;
+
+        public string Name
+        {
+            get { return this.name; }
+            set { this.name = value; }
+        }
+
+
+        public double Salary
+        {
+            get { return this.salary; }
+            set { this.salary = value; }
+        }
+
+
+        public string Position
+        {
+            get { return this.position; }
+            set { this.position = value; }
+        }
+
+
+        public string Department
+        {
+            get { return this.department; }
+            set { this.department = value; }
+        }
+
+        public string Email
+        {
+            get { return this.email; }
+            set { this.email = value; }
+        }
+
+        public int Age
+        {
+            get { return this.age; }
+            set { this.age = value; }
+        }
+
+        public Employee(string name, double salary, string position, string department, string email, int age)
+        {
+            this.name = name;
+            this.salary = salary;
+            this.position = position;
+            this.department = department;
+            this.email = email;
+            this.age = age;
+        }
+        public override string ToString()
+        {
+            return $"{this.name}, {this.salary:f2}, {this.email}, {this.age}";
+        }
+        
+            
+             
+            
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+using System;
+using System.Linq;
+using System.Collections.Generic;
+namespace EmployeeList
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int n = int.Parse(Console.ReadLine());
+            List<Employee> employeeList = new List<Employee>();
+            Dictionary<string, List<double>> departmentSalaries = new Dictionary<string, List<double>>();
+
+
+            for (int i = 0; i < n; i++)
+            {
+                List<string> inputLine = Console.ReadLine().Split(' ').ToList();
+                string name = inputLine[0];
+                double salary = double.Parse(inputLine[1]);
+                string position = inputLine[2];
+                string department = inputLine[3];
+                string email = "";
+                int age = 0;
+
+
+                if (inputLine.Count==5)
+                {
+                    if (inputLine[4].Contains('@'))
+                    {
+                        email = inputLine[4];
+                    }
+                    else
+                    {
+                        age = int.Parse(inputLine[4]);
+                    }
+                }
+
+
+                else if (inputLine.Count == 6)
+                {
+                    email = inputLine[4];
+                    age = int.Parse(inputLine[5]);
+                }
+
+
+
+                    employeeList.Add(new Employee (name, salary, position, department, email, age));
+
+
+                if (departmentSalaries.ContainsKey(department))
+                {
+                    departmentSalaries[department].Add(salary);
+                }
+                else
+                {
+                    departmentSalaries.Add(department, new List<double>() { salary });
+                }
+
+
+            }
+
+           // departmentSalaries.OrderByDescending(element => element.Value.Average());
+
+
+            string departmentHightAvSalary = departmentSalaries.OrderByDescending(element => element.Value.Average()).First().Key;
+            Console.WriteLine("Highest Average Salary: {0}", departmentHightAvSalary);
+            foreach (var item in employeeList.OrderByDescending(element => element.Salary))
+            {
+                if (item.Department == departmentHightAvSalary)
+                {
+                    Console.WriteLine(item.ToString());
+                }
+            }
+
+        }
+    }
+}
